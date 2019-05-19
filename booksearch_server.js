@@ -25,7 +25,7 @@ var server = app.listen(3000, function() {
 });
 
 con.connect(function(error){
-    if(!!error)console.log("error"+statusCode);
+    if(!!error)console.log("error"+con.statusCode);
     else console.log("connected");
 });
 
