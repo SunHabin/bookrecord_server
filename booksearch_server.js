@@ -29,3 +29,12 @@ con.connect(function(error){
     else console.log("connected");
 });
 
+app.get('/user',function(req, res){
+    con.query('SELECT * FROM user',function(error, rows, fields){
+        if(!!error)console.log('error');
+        else{
+            console.log(rows);
+            res.send(rows);
+        }
+    })
+})
