@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
 app.use(express.json());
 
@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var con = mysql.createConnection({
 
-    host: '220.149.242.12',
+    host: 'localhost',
     user: 'root',
     password: 'bean0403',
     database: 'jajus'
