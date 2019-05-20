@@ -36,7 +36,7 @@ app.get('/user',function(req, res){
     console.log("get select");
 
     con.query('SELECT * FROM user',function(error, rows, fields){
-        if(!!error)console.log('error');
+        if(!!error)console.log(error);
         else{
             console.log(rows);
             res.send(rows);
