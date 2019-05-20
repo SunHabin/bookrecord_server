@@ -46,7 +46,7 @@ app.get('/user',function(req, res){
 app.post('/user',function(req, res){
     console.log("post");
     
-    con.query('INSERT INTO users SET ?', req.body, function(error, rows, fields){
+    con.query('INSERT INTO user SET ?', req.body, function(error, rows, fields){
         if(!!error)console.log(error);
         else{
             console.log(rows);
