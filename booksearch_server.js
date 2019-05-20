@@ -33,7 +33,7 @@ con.connect(function(error){
 app.get('/user',function(req, res){
     
     //TEST
-    console.log("get");
+    console.log("get select");
 
     con.query('SELECT * FROM user',function(error, rows, fields){
         if(!!error)console.log('error');
@@ -51,6 +51,20 @@ app.post('/user',function(req, res){
     console.log("post");
     
     con.query('INSERT INTO user SET ?', req.body, function(error, rows, fields){
+        if(!!error)console.log(error);
+        else{
+            console.log(rows);
+            res.send(JSON.stringify(rows));
+        }
+    })
+})
+
+app.get('/user/:user_name', function(req, res){
+        
+    //TEST
+    console.log("get select");
+
+    con.query('SELECT * FROM user WHERE user_name?', req.params.user_name, function(error, rows, fields){
         if(!!error)console.log(error);
         else{
             console.log(rows);
