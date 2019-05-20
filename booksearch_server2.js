@@ -30,5 +30,5 @@ app.get('/search/book', function(req, res) {
 });
 
 app.listen(3000, function () {
-  console.log('http://127.0.0.1:3000/search/book?query=검색어 app listening on port 3000!');
+  console.log('http://127.0.0.1:10001/search/book?query=검색어 app listening on port 3000!');
 });
