@@ -31,8 +31,10 @@ con.connect(function(error){
 
 // data client로 보내기
 app.get('/user',function(req, res){
-    console.log("get");
     
+    //TEST
+    console.log("get");
+
     con.query('SELECT * FROM user',function(error, rows, fields){
         if(!!error)console.log('error');
         else{
@@ -44,6 +46,8 @@ app.get('/user',function(req, res){
  
 // insert
 app.post('/user',function(req, res){
+    
+    //TEST
     console.log("post");
     
     con.query('INSERT INTO user SET ?', req.body, function(error, rows, fields){
