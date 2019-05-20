@@ -64,7 +64,7 @@ app.get('/user/:user_name', function(req, res){
     //TEST
     console.log("get select");
 
-    con.query('SELECT * FROM user WHERE user_name?', req.params.user_name, function(error, rows, fields){
+    con.query('SELECT * FROM user WHERE user_name=?', req.params.user_name, function(error, rows, fields){
         if(!!error)console.log(error);
         else{
             console.log(rows);
