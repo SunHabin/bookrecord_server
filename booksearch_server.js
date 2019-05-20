@@ -29,12 +29,28 @@ con.connect(function(error){
     else console.log("connected");
 });
 
+// data client로 보내기
 app.get('/user',function(req, res){
+    console.log("get");
+    
     con.query('SELECT * FROM user',function(error, rows, fields){
         if(!!error)console.log('error');
         else{
             console.log(rows);
             res.send(rows);
+        }
+    })
+})
+ 
+// insert
+app.post('/user',function(req, res){
+    console.log("post");
+    
+    con.query('INSERT INTO users SET ?', req.body, function(error, rows, fields){
+        if(!!error)console.log(error);
+        else{
+            console.log(rows);
+            res.send(JSON.stringify(rows));
         }
     })
 })
