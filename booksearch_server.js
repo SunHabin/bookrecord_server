@@ -72,3 +72,17 @@ app.get('/user/:user_name', function(req, res){
         }
     })
 })
+
+app.delete('/user/:user_name', function(req, res){
+        
+    //TEST
+    console.log("delete");
+
+    con.query('DELETE FROM user WHERE user_name=?', req.params.user_name, function(error, rows, fields){
+        if(!!error)console.log(error);
+        else{
+            console.log(rows);
+            res.enj('success delete!');
+        }
+    })
+})
