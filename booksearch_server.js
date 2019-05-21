@@ -82,7 +82,7 @@ app.delete('/user/:user_name', function(req, res){
         if(!!error)console.log(error);
         else{
             console.log(rows);
-            res.enj('success delete!');
+            res.end('success delete!');
         }
     })
 })
