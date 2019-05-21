@@ -37,8 +37,8 @@ con.connect(function(error){
 
 app.get('/search/book/:ISBN', function(req, res) {
     // JSON 결과
-    console.log(req.query.query)
-    var api_url = 'https://openapi.naver.com/v1/search/book.json?query=' + encodeURI(req.query.query);
+    console.log(req.params.ISBN)
+    var api_url = 'https://openapi.naver.com/v1/search/book.json?query=' + encodeURI(req.params.ISBN);
 
     var request = require('request');
     var options = {
