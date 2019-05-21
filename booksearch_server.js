@@ -92,7 +92,7 @@ app.put('/user',function(req, res){
     //TEST
     console.log("put");
     
-    con.query('UPDATE user set user_name=?, email=?',[req.body.user_name, req.body.email], function(error, rows, fields){
+    con.query('UPDATE user set email=?, age=?',[req.body.email, req.body.age], function(error, rows, fields){
         if(!!error)console.log(error);
         else{
             console.log(rows);
