@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-var bodyParser = require('/body-parser');
+var bodyParser = require('body-parser');
 
 var client_id = 'lD4obV87D0slswIijir6';
 var client_secret = 'anU63Lz7eq';
