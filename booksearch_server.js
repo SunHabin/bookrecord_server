@@ -92,9 +92,9 @@ app.put('/user',function(req, res){
     //TEST
     console.log("put");
     
-    con.query('UPDATE user set email=?, age=?',[req.body.email, req.body.age], function(error, rows, fields){
+    con.query('UPDATE user set email=?, age=? WHERE user_name=?',[req.body.email, req.body.age, req.body.user_name], function(error, rows, fields){
         if(!!error)console.log(error);
-        else{
+        else{ 
             console.log(rows);
             res.send(JSON.stringify(rows));
         }
