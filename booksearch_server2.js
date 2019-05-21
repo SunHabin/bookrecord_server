@@ -35,7 +35,7 @@ con.connect(function(error){
         console.log("connected");
 })
 
-app.get('/search/book', function(req, res) {
+app.get('/search/book/', function(req, res) {
     // JSON 결과
     console.log(req.query.query)
     var api_url = 'https://openapi.naver.com/v1/search/book.json?query=' + encodeURI(req.query.query);
