@@ -48,7 +48,6 @@ app.get('/search/book/:ISBN', function(req, res) {
     request.get(options, function (error,response,body) {
         if(!error && response.statusCode == 200) {
             res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-            console.body[items];
             res.end(body);
         } else {
             res.status(response.statusCode).end();
