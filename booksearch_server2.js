@@ -1,12 +1,39 @@
-// 네이버 검색 Open API test
-
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-var bodyParser = require('/body-parser');
+var bodyParser = require('body-parser');
 
+app.use(express.json());
+
+//support URL-encode body
+app.use(bodyParser.urlencoded({extended:true}));
+
+//naver api authetication
 var client_id = 'lD4obV87D0slswIijir6';
 var client_secret = 'anU63Lz7eq';
+
+// mysql connection info
+var con = mysql.createConnection({
+    host : 'localhost',
+    user: 'root',
+    password: 'bean0403',
+    database: 'jajus'
+});
+
+// server start
+var server = app.listen(3000, function() {
+    var host = server.address().address
+    var port = server.address().port
+    console.log("server start")
+})
+
+// mysql connection
+con.connect(function(error){
+    if(!!error)
+        console.log("error:"+error);
+    else
+        console.log("connected");
+})
 
 app.get('/search/book', function(req, res) {
     // JSON 결과
@@ -27,8 +54,4 @@ app.get('/search/book', function(req, res) {
             console.log('error = ' + response.statusCode);
         }
     });
-});
-
-app.listen(3000, function () {
-  console.log('http://127.0.0.1:10001/search/book?query=검색어 app listening on port 3000!');
 });
