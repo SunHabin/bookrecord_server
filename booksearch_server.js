@@ -86,3 +86,17 @@ app.delete('/user/:user_name', function(req, res){
         }
     })
 })
+
+app.put('/user',function(req, res){
+    
+    //TEST
+    console.log("post");
+    
+    con.query('UPDATE user SET user_name=?, email=?',[req.body.user_name, req.body.email], function(error, rows, fields){
+        if(!!error)console.log(error);
+        else{
+            console.log(rows);
+            res.send(JSON.stringify(rows));
+        }
+    })
+})
