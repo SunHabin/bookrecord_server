@@ -81,6 +81,7 @@ function saveBook(content, ISBN) {
         try {
             let cate = '';
             cate = $('#category_location1_depth').text();
+            console.log(cate);
             category = selectCate(cate);
         }
         catch (error) {
@@ -91,7 +92,7 @@ function saveBook(content, ISBN) {
     var sql = 'INSERT INTO book_all (ISBN, book_name, img_src, author, publisher, public_date, more_url, read_date, category) VALUES(?,?,?,?,?,?,?,?,?)';
     var params = [ISBN, content.items[0].title.toString(), content.items[0].image, content.items[0].author, content.items[0].publisher, content.items[0].pubdate, content.items[0].link, date, category];
     console.log(category);
-    
+
     con.query(sql, params, function (err, rows, fields) {
         if (err)
             console.log(err);
