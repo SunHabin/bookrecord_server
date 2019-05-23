@@ -72,7 +72,7 @@ function saveBook(content, ISBN) {
     var sql = 'INSERT INTO book_all (ISBN, book_name, img_src, author, publisher, public_date, more_url, read_date) VALUES(?,?,?,?,?,?,?,?)';
     var params = [ISBN, content.items[0].title, content.items[0].image, content.items[0].author, content.items[0].publisher, content.items[0].pubdate, content.items[0].link, date];
 
-    conn.query(sql, params, function(err, rows, fields){
+    con.query(sql, params, function(err, rows, fields){
         if(err)
         console.log(err);
     })
