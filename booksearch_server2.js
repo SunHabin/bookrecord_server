@@ -77,6 +77,7 @@ function saveBook(content, ISBN) {
 
     request(content.items[0].link, (error, response, body) => {
         if (error) throw error;
+        console.log("firstofall");
         let $ = cherrio.load(body);
         try {
             let cate = '';
