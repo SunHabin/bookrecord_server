@@ -10,6 +10,7 @@ require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
 var date = moment().format('YYYY-MM-DD');
 var content = null;
+var category = 1;
 
 app.use(express.json());
 
@@ -73,7 +74,6 @@ app.get('/search/book/:ISBN', function (req, res) {
 function saveBook(content, ISBN) {
 
     var request = require('request');
-    var category = 1;
 
     request(content.items[0].link, (error, response, body) => {
         if (error) throw error;
