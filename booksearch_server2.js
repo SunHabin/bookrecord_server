@@ -55,7 +55,7 @@ app.get('/search/book/:ISBN', function(req, res) {
         if(!error && response.statusCode == 200) {
             // 데이터 저장을 위한 객체 변환
             content = JSON.parse(body);
-            //saveBook(content, req.params.ISBN);
+            saveBook(content, req.params.ISBN);
 
             res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
             console.log(body);
@@ -68,8 +68,12 @@ app.get('/search/book/:ISBN', function(req, res) {
 });
 
 
-// function saveBook(content, ISBN) {
-//     var sql = 'INSERT INTO book_all (ISBN, book_name, img_src, author, publisher, public_date, more_url, read_date) VALUES(?,?,?,?,?,?,?,?)';
-//     var params = [ISBN, content.items[0].title, content.items[0].image, content.items[0].author, content.items[0].publisher, content.items[0].pubdate, content.items[0].link, ]
+function saveBook(content, ISBN) {
+    var sql = 'INSERT INTO book_all (ISBN, book_name, img_src, author, publisher, public_date, more_url, read_date) VALUES(?,?,?,?,?,?,?,?)';
+    var params = [ISBN, content.items[0].title, content.items[0].image, content.items[0].author, content.items[0].publisher, content.items[0].pubdate, content.items[0].link, date];
 
-// }
+    conn.query(sql, params, function(err, rows, fields){
+        if(err)
+        console.log(err);
+    })
+}
