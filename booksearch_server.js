@@ -100,3 +100,23 @@ app.put('/user',function(req, res){
         }
     })
 })
+
+
+var sql = 'INSERT INTO topic (title, description, author) VALUES("Express", "Web framework", "jacob")';
+conn.query(sql, function(err, rows, fields){
+    if(err) console.log(err);
+    console.log(rows.insertId); 
+    // insertId는 auto_increment설정해 놓았다.
+    //(고유한 식별자를 알아낼 수 있는 방법이다.)
+});
+
+//sql문을 하드코딩 하지 않고, ? 라는 치환자를 두어 코딩함
+var sql = 'INSERT INTO topic (title, description, author) VALUES(?, ?, ?)';
+var params = ['Supervisor', 'Watcher', 'graphittie'];
+//파라미터를 값들로 줌(배열로 생성)
+conn.query(sql, params, function(err, rows, fields){
+    // 쿼리문 두번째 인자로 파라미터로 전달함(값들을 치환시켜서 실행함. 
+    // 보안과도 밀접한 관계가 있음(sql injection attack))
+    if(err) console.log(err);
+    console.log(rows.insertId);
+});
