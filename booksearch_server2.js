@@ -81,9 +81,9 @@ function saveBook(content, ISBN) {
         try {
             let cate = '';
             cate = $('#category_location1_depth').text();
-            console.log(cate);
+            console.log("first" + cate);
             category = selectCate(cate);
-            console.log(category);
+            console.log("second" + category);
         }
         catch (error) {
             console.error(error);
@@ -91,7 +91,7 @@ function saveBook(content, ISBN) {
     });
 
     var sql = 'INSERT INTO book_all (ISBN, book_name, img_src, author, publisher, public_date, more_url, read_date, category) VALUES(?,?,?,?,?,?,?,?,?)';
-    console.log(category);
+    console.log("third" + category);
     var params = [ISBN, content.items[0].title.toString(), content.items[0].image, content.items[0].author, content.items[0].publisher, content.items[0].pubdate, content.items[0].link, date, category];
     
     con.query(sql, params, function (err, rows, fields) {
