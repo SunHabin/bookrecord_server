@@ -80,7 +80,7 @@ function saveBook(content, ISBN) {
         let $ = cherrio.load(body);
         try {
             let cate = '';
-            cate = $('document.querySelector("#category_location1_depth")').text();
+            cate = $('#category_location1_depth').text();
             category = selectCate(cate);
             console.log(category);
         }
