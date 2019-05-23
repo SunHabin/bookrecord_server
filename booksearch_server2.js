@@ -50,7 +50,7 @@ app.get('/search/book/:ISBN', function(req, res) {
             //saveBook(body, req.params.ISBN);
             res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
             console.log(body);
-            console.log(body.items[0].title);
+            console.log(body.items.title);
             res.end(body);
         } else {
             res.status(response.statusCode).end();
