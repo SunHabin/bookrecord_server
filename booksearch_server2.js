@@ -51,7 +51,7 @@ app.get('/search/book/:ISBN', function(req, res) {
             res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
             console.log(body);
             var content = JSON.parse(body);
-            console.log(content.items);
+            console.log(content.items[0].title);
             res.end(body);
         } else {
             res.status(response.statusCode).end();
