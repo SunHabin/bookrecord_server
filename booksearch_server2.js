@@ -2,6 +2,11 @@ var express = require('express');
 var app = express();
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
+var moment = require('moment');
+require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
+var date = moment().format('YYYY-MM-DD');
+console.log(date);
 var content = null;
 
 app.use(express.json());
@@ -50,7 +55,7 @@ app.get('/search/book/:ISBN', function(req, res) {
         if(!error && response.statusCode == 200) {
             // 데이터 저장을 위한 객체 변환
             content = JSON.parse(body);
-            saveBook(content, req.params.ISBN);
+            //saveBook(content, req.params.ISBN);
 
             res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
             console.log(body);
@@ -63,8 +68,8 @@ app.get('/search/book/:ISBN', function(req, res) {
 });
 
 
-function saveBook(content, ISBN) {
-    var sql = 'INSERT INTO book_all (ISBN, '
-    var params = [ISBN, body.items[0].]
+// function saveBook(content, ISBN) {
+//     var sql = 'INSERT INTO book_all (ISBN, book_name, img_src, author, publisher, public_date, more_url, read_date) VALUES(?,?,?,?,?,?,?,?)';
+//     var params = [ISBN, content.items[0].title, content.items[0].image, content.items[0].author, content.items[0].publisher, content.items[0].pubdate, content.items[0].link, ]
 
-}
+// }
