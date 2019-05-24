@@ -100,10 +100,7 @@ function saveBook(content, ISBN) {
             })
         }
     });
-
-
 };
-
 
 function selectCate(cate) {
     var category = cate;
