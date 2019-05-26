@@ -1,3 +1,4 @@
+// 필요 module
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
@@ -9,6 +10,8 @@ var moment = require('moment');
 require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
 var date = moment().format('YYYY-MM-DD');
+
+// 필요 전역 변수
 var content = null;
 var category = 1;
 
@@ -44,6 +47,7 @@ con.connect(function (error) {
         console.log("connected");
 })
 
+// ISBN코드로 책 데이터 검색
 app.get('/search/book/:ISBN', function (req, res) {
     // JSON 결과
     console.log(req.params.ISBN)
@@ -69,7 +73,6 @@ app.get('/search/book/:ISBN', function (req, res) {
         }
     });
 });
-
 
 function saveBook(content, ISBN) {
 
@@ -159,3 +162,5 @@ function selectCate(cate) {
             return 1;
     }
 }
+
+// 
