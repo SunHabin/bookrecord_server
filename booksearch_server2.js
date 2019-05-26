@@ -168,7 +168,7 @@ app.get('/oneBook/', function(req,res){
 
     console.log("oneBook");
 
-    con.query('SELECT * FROM book_all WHERE 9788932473901', function(error, rows, fields){
+    con.query('SELECT * FROM book_all WHERE ISBN = 9788932473901', function(error, rows, fields){
         if(!!error)
             console.log(error);
         else{
