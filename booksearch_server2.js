@@ -182,10 +182,7 @@ app.get('/oneBook/', function(req,res){
 app.get('/readBook/:name', function(req, res){
     //TEST
     console.log("get readBook");
-    new_date = "'" + date.substring(0,6) + "'";
-
-    console.log(new_date);
-    console.log(req.params.name);
+    new_date = "'" + date.substring(0,7) + "'";
 
     con.query('SELECT month_count FROM user_monthly where user_name = ? and read_ym = ?', req.params.name, new_date, function(error, rows, fields){
         if(!!error)
