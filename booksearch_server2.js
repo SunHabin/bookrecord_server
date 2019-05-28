@@ -182,7 +182,7 @@ app.get('/oneBook/', function(req,res){
 app.get('/readBook/:name', function(req, res){
     //TEST
     console.log("get readBook");
-    new_date = date.substring(0,10);
+    new_date = "'" + date.substring(0,10) + "'";
 
     console.log(new_date);
 
