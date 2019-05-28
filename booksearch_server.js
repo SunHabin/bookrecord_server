@@ -53,6 +53,8 @@ app.post('/user',function(req, res){
     con.query('INSERT INTO user SET ?', req.body, function(error, rows, fields){
         if(!!error)console.log(error);
         else{
+            console.log(req.body);
+            console.log("hello");
             console.log(rows);
             res.send(JSON.stringify(rows));
         }
