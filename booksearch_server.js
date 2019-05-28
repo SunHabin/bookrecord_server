@@ -55,6 +55,8 @@ app.post('/user',function(req, res){
         else{
             console.log(req.body);
             console.log("hello");
+            console.log(req.body.user_name)
+            console.log()
             console.log(rows);
             res.send(JSON.stringify(rows));
         }
