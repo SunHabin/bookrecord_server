@@ -194,3 +194,30 @@ app.get('/readBook/:name', function(req, res){
         }
     })
 })
+
+app.post('/saveBook/', function(req,res){
+    //TEST
+    console.log("get saveBook");
+    var read_date = date.substring(0,10);
+    var category = '';
+    
+    con.query('SELECT * FROM book_all where ISBN = ?',req.body.ISBN, function(error,rows,fields){
+        if(!!error)
+            console.log(error);
+        else{
+            category = rows.category;
+        }
+    });
+
+    var params = [req.body.user_name, req.body.ISBN, read_date, req.body.read_rate, category];
+    con.query('INSERT INTO user_book values (?,?,?,?,?)',params, function(err,rows,fields){
+        if(!!error)
+        console.log(error);
+        else{
+            console.log(rows);
+            res.end('success insert!');
+        }
+    })
+    
+    con.query('')
+})
