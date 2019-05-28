@@ -202,8 +202,10 @@ app.post('/saveBook/', function(req,res){
     var category = '';
     
     con.query('SELECT * FROM book_all where ISBN = ?',req.body.ISBN, function(error,rows,fields){
-        if(!!error)
+        if(!!error) {
+            console.log("error1");
             console.log(error);
+        }
         else{
             category = rows.category;
         }
@@ -211,8 +213,10 @@ app.post('/saveBook/', function(req,res){
 
     var params = [req.body.user_name, req.body.ISBN, read_date, req.body.read_rate, category];
     con.query('INSERT INTO user_book (user_name, ISBN, read_date, read_rate, category) values (?,?,?,?,?)',params, function(err,rows,fields){
-        if(!!error)
-        console.log(error);
+        if(!!error) {
+            console.log("error2");
+            console.log(error);
+        }
         else{
             console.log(rows);
             res.end('success insert!');
