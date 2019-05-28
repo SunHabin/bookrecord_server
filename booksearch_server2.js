@@ -210,7 +210,7 @@ app.post('/saveBook/', function(req,res){
     });
 
     var params = [req.body.user_name, req.body.ISBN, read_date, req.body.read_rate, category];
-    con.query('INSERT INTO user_book values (?,?,?,?,?)',params, function(err,rows,fields){
+    con.query('INSERT INTO user_book (user_name, ISBN, read_date, read_rate, category) values (?,?,?,?,?)',params, function(err,rows,fields){
         if(!!error)
         console.log(error);
         else{
