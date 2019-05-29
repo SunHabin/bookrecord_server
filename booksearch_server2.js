@@ -214,8 +214,12 @@ app.post('/saveBook/', function(req,res){
         }
     });
 
-    var params = [req.body.user_name, req.body.ISBN, read_date, req.body.read_rate, category];
-    con.query('INSERT INTO user_book set (user_name: ?,  ISBN: ?, read_date: ?, read_rate: ?, category: ?)',params, function(error2,rows,fields){
+    var user_name = "'" + req.body.user_name + "'";
+    var ISBN = "'" + req.body.ISBN + "'";
+    read_date = "'" + read_date +"'";
+
+    var params = [user_name, ISBN, read_date, req.body.read_rate, category];
+    con.query('INSERT INTO user_book (user_name, ISBN, read_date, read_rate, category) values (?,?,?,?,?)',params, function(error2,rows,fields){
         if(!!error) {
             console.log("error2");
             console.log(error2);
