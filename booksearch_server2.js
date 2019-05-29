@@ -196,6 +196,7 @@ app.get('/readBook/:name', function (req, res) {
     })
 })
 
+// 책 등록
 app.post('/saveBook/', function (req, res) {
     //TEST
     console.log("get saveBook");
@@ -247,3 +248,18 @@ function selectParams(user_name, ISBN, read_date, read_rate, category){
         })
 
 }
+
+
+// 개인 독서통계 - category
+app.post('/statCategory/',function(req,res){
+    
+    //TEST
+    console.log("statCategory");
+
+    con.query('SELECT ')
+
+})
+
+
+
+// 개인 독서통계 - month
