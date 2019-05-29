@@ -203,6 +203,7 @@ app.post('/saveBook/', function(req,res){
     
     con.query('SELECT * FROM book_all where ISBN = ?',req.body.ISBN, function(error,rows,fields){
         if(!!error) {
+            console.log(req.body);
             console.log(req.body.ISBN);
             console.log("error1");
             console.log(error);
