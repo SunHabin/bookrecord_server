@@ -231,5 +231,8 @@ app.post('/saveBook/', function (req, res) {
                 res.end('success insert!');
             }
         })
-    };
+    }
+    else {
+        console.log("ssibal~");
+    }
 })
