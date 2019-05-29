@@ -96,7 +96,7 @@ function saveBook(content, ISBN) {
             var sql = 'INSERT INTO book_all (ISBN, book_name, img_src, author, publisher, public_date, more_url, read_date, category) VALUES(?,?,?,?,?,?,?,?,?)';
             console.log("third" + category);
             var params = [ISBN, content.items[0].title.toString(), content.items[0].image, content.items[0].author, content.items[0].publisher, content.items[0].pubdate, content.items[0].link, date, category];
-            
+
             con.query(sql, params, function (err, rows, fields) {
                 if (err)
                     console.log(err);
@@ -164,14 +164,14 @@ function selectCate(cate) {
 }
 
 // main 하루한권
-app.get('/oneBook/', function(req,res){
+app.get('/oneBook/', function (req, res) {
 
     console.log("oneBook");
 
-    con.query('SELECT * FROM book_all WHERE ISBN = 9788932473901', function(error, rows, fields){
-        if(!!error)
+    con.query('SELECT * FROM book_all WHERE ISBN = 9788932473901', function (error, rows, fields) {
+        if (!!error)
             console.log(error);
-        else{
+        else {
             console.log(rows);
             res.send(JSON.stringify(rows));
         }
@@ -179,63 +179,57 @@ app.get('/oneBook/', function(req,res){
 })
 
 // main 읽은 책 수
-app.get('/readBook/:name', function(req, res){
+app.get('/readBook/:name', function (req, res) {
     //TEST
     console.log("get readBook");
     //new_date = "'" + date.substring(0,7) + "'";
-    new_date = date.substring(0,7);
+    new_date = date.substring(0, 7);
 
-    con.query('SELECT month_count FROM user_monthly where user_name = ? and read_ym = ?', [req.params.name, new_date], function(error, rows, fields){
-        if(!!error)
+    con.query('SELECT month_count FROM user_monthly where user_name = ? and read_ym = ?', [req.params.name, new_date], function (error, rows, fields) {
+        if (!!error)
             console.log(error);
-        else{
+        else {
             console.log(rows);
             res.end(JSON.stringify(rows));
         }
     })
 })
 
-app.post('/saveBook/', function(req,res){
+app.post('/saveBook/', function (req, res) {
     //TEST
     console.log("get saveBook");
-    var read_date = date.substring(0,10);
+    var read_date = date.substring(0, 10);
     var category = '';
+    var pass1 = 0;
     console.log(req.body);
     console.log(req.body.ISBN);
-try{
-    con.query('SELECT * FROM book_all where ISBN = ?',req.body.ISBN, function(error,rows,fields){
-        if(!!error) {
+
+    con.query('SELECT * FROM book_all where ISBN = ?', req.body.ISBN, function (error, rows, fields) {
+        if (!!error) {
             console.log("error1");
             console.log(error);
             console.log(rows.category);
         }
-        else{
+        else {
             console.log("hello")
             console.log(rows);
             console.log(rows[0].category);
             category = rows[0].category;
+            pass1 = 1;
         }
     });
-}
-finally{
-    var user_name = "'" + req.body.user_name + "'";
-    var ISBN = "'" + req.body.ISBN + "'";
-    read_date = "'" + read_date +"'";
-    console.log(user_name);
-    console.log(ISBN);
-    console.log(read_date);
-    console.log("start");
 
-    var params = [user_name, ISBN, read_date, req.body.read_rate, category];
-    con.query('INSERT INTO user_book (user_name, ISBN, read_date, read_rate, category) values (?,?,?,?,?)',params, function(error2,rows,fields){
-        if(!!error) {
-            console.log("error2");
-            console.log(error2);
-        }
-        else{
-            console.log(rows);
-            res.end('success insert!');
-        }
-    })
-}
+    if (pass1) {
+        var params = [user_name, ISBN, read_date, req.body.read_rate, category];
+        con.query('INSERT INTO user_book (user_name, ISBN, read_date, read_rate, category) values (?,?,?,?,?)', params, function (error2, rows, fields) {
+            if (!!error) {
+                console.log("error2");
+                console.log(error2);
+            }
+            else {
+                console.log(rows);
+                res.end('success insert!');
+            }
+        })
+    };
 })
