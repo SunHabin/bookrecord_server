@@ -210,6 +210,8 @@ app.post('/saveBook/', function(req,res){
             console.log(rows.category);
         }
         else{
+            console.log("hello")
+            console.log(rows);
             category = rows.category;
         }
     });
