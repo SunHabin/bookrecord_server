@@ -219,15 +219,15 @@ app.post('/saveBook/', function (req, res) {
             category = rows[0].category;
             user_name = req.body.user_name;
             ISBN = req.body.ISBN;
-            console.log(req.body.read_rate);
+            // console.log(req.body.read_rate);
 
-            if(req.body.read_rate == null){
-                read_rate = 1;
-            }
-            else {
-            console.log(req.body.read_rate);
-            read_rate = req.body.read_rate;
-            }
+            // if(req.body.read_rate == null){
+            //     read_rate = 1;
+            // }
+            // else {
+            // console.log(req.body.read_rate);
+            // read_rate = req.body.read_rate;
+            // }
             selectParams(user_name, ISBN, read_date, read_rate, category);
             res.end('success insert!');
         }
