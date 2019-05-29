@@ -77,6 +77,7 @@ app.get('/search/book/:ISBN', function (req, res) {
 function saveBook(content, ISBN) {
 
     var request = require('request');
+    console.log(content.items);
 
     request(content.items[0].link, (error, response, body) => {
         if (error) throw error;
