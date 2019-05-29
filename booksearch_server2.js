@@ -212,8 +212,8 @@ app.post('/saveBook/', function(req,res){
         else{
             console.log("hello")
             console.log(rows);
-            console.log(rows.category);
-            category = rows.category;
+            console.log(rows[0].category);
+            category = rows[0].category;
         }
     });
 
