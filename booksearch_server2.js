@@ -217,6 +217,8 @@ app.post('/saveBook/', function (req, res) {
             console.log(rows);
             console.log(rows[0].category);
             category = rows[0].category;
+            user_name = req.body.user_name;
+            ISBN = req.body.ISBN;
             if(req.body.read_rate == null){
                 read_rate = 1;
             }
