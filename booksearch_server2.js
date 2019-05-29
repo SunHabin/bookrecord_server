@@ -203,6 +203,7 @@ app.post('/saveBook/', function (req, res) {
     var ISBN = '';
     var read_rate = 1;
     var category = 0;
+    console.log(req.body);
 
     con.query('SELECT * FROM book_all where ISBN = ?', req.body.ISBN, function (error, rows, fields) {
         if (!!error) {
@@ -215,27 +216,11 @@ app.post('/saveBook/', function (req, res) {
             console.log(rows);
             console.log(rows[0].category);
             category = rows[0].category;
-            user_name = "'" + req.body.user_name + "'";
-            ISBN = "'" + req.body.ISBN + "'";
             read_rate = req.body.read_rate;
             selectParams(user_name, ISBN, read_date, read_rate, category);
             res.end('success insert!');
         }
     });
-
-    // if (pass1) {
-    //     var params = [user_name, ISBN, read_date, req.body.read_rate, category];
-    //     con.query('INSERT INTO user_book (user_name, ISBN, read_date, read_rate, category) values (?,?,?,?,?)', params, function (error2, rows, fields) {
-    //         if (!!error) {
-    //             console.log("error2");
-    //             console.log(error2);
-    //         }
-    //         else {
-    //             console.log(rows);
-                
-    //         }
-    //     })
-    // }
 })
 
 function selectParams(user_name, ISBN, read_date, read_rate, category){
