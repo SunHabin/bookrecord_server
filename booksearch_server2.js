@@ -217,7 +217,12 @@ app.post('/saveBook/', function (req, res) {
             console.log(rows);
             console.log(rows[0].category);
             category = rows[0].category;
+            if(req.body.read_rate == null){
+                read_rate = 1;
+            }
+            else {
             read_rate = req.body.read_rate;
+            }
             selectParams(user_name, ISBN, read_date, read_rate, category);
             res.end('success insert!');
         }
