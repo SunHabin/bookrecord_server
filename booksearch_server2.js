@@ -251,12 +251,19 @@ function selectParams(user_name, ISBN, read_date, read_rate, category){
 
 
 // 개인 독서통계 - category
-app.post('/statCategory/',function(req,res){
+app.get('/statCategory/:name',function(req,res){
     
     //TEST
     console.log("statCategory");
 
-    con.query('SELECT ')
+    con.query('SELECT * FROM user_category where user_name = ? order by ca_count desc limit 3', req.params.name, function(error, rows, fields) {
+        if(!!error)
+            console.log(error);
+        else{
+            console.log(rows);
+            res.send(JSON.stringify(rows));
+        }
+    })
 
 })
 
