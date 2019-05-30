@@ -251,7 +251,7 @@ function selectParams(user_name, ISBN, read_date, read_rate, category){
 
 
 // 개인 독서통계 - category
-app.get('/statCategory/:name',function(req,res){
+app.get('/statCategory/name',function(req,res){
     
     //TEST
     console.log("statCategory");
