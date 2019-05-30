@@ -255,8 +255,8 @@ app.get('/statCategory/:name',function(req,res){
     
     //TEST
     console.log("statCategory");
-    console.log(req.params.name);
-    con.query('SELECT * FROM user_category where user_name = ? order by ca_count desc limit 3', req.params.name, function(error, rows, fields) {
+    
+    con.query('SELECT * FROM user_category where user_name = ? order by ca_count desc', req.params.name, function(error, rows, fields) {
         if(!!error)
             console.log(error);
         else{
