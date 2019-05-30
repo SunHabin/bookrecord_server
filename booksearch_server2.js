@@ -256,7 +256,7 @@ app.get('/statCategory/:name',function(req,res){
     //TEST
     console.log("statCategory");
     
-    con.query('SELECT * FROM user_category', req.params.name, function(error, rows, fields) {
+    con.query('SELECT * FROM user_category where user_name = ?', req.params.name, function(error, rows, fields) {
         if(!!error)
             console.log(error);
         else{
