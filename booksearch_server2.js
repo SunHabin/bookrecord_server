@@ -270,3 +270,11 @@ app.get('/statCategory/:name',function(req,res){
 
 
 // 개인 독서통계 - month
+app.post('statMonthly/', function(req,res){
+    //TEST
+    console.log("statMonthly");
+
+    var read_ym = req.body.
+
+    con.query('select * from user_monthly where user_name = ? and read_ym like ?', [req.body.user_name, ])
+})
