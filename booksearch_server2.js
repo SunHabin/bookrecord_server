@@ -281,7 +281,7 @@ app.post('/statMonthly/', function(req,res){
             console.log(error);
         else{
             console.log(rows);
-            res.send(JSON(stringify(rows)));
+            res.send(JSON.stringify(rows));
         }
     })
 })
