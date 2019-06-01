@@ -270,13 +270,13 @@ app.get('/statCategory/:name',function(req,res){
 
 
 // 개인 독서통계 - month
-app.post('/statMonthly/', function(req,res){
+app.get('/statMonthly/:name&year', function(req,res){
     //TEST
     console.log("statMonthly");
 
-    var read_ym = req.body.year + '%';
+    var read_ym = req.params.year + '%';
 
-    con.query('select * from user_monthly where user_name = ? and read_ym like ? order by read_ym', [req.body.user_name, read_ym], function(error,rows,fields){
+    con.query('select * from user_monthly where user_name = ? and read_ym like ? order by read_ym', [req.params.user_name, read_ym], function(error,rows,fields){
         if(!!error)
             console.log(error);
         else{
