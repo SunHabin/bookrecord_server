@@ -288,11 +288,11 @@ app.post('/statMonthly/', function(req,res){
 
 //지혜가한거
 //내책장 - 제목 fetch
-app.post('/myreadBook/', function (req, res) {
+app.get('/myreadBook/', function (req, res) {
 
     console.log("myreadBook");
-    var read_ym = req.body.year + '%';
-    con.query('select * from user_monthly where user_name = ? and read_ym like ? order by read_ym', [req.body.user_name, read_ym], function (error, rows, fields) {
+
+    con.query('select * from user_monthly where user_name = ?', [req.params.name], function (error, rows, fields) {
         if (!!error)
             console.log(error);
         else {
