@@ -292,7 +292,7 @@ app.get('/myreadBook/:name', function (req, res) {
 
     console.log("myreadBook");
 
-    con.query('select * from user_book join book_all on user_book.ISBN = book_all.ISBN where user_name = ? order by read_date DESC', [req.params.name], function (error, rows, fields) {
+    con.query('select * from user_book join book_all on user_book.ISBN = book_all.ISBN where user_name = ? order by book_all.read_date DESC', [req.params.name], function (error, rows, fields) {
         if (!!error)
             console.log(error);
         else {
