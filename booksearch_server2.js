@@ -308,7 +308,7 @@ app.post('/statOtherMonthly/', function(req,res){
 
     var read_ym = req.body.year + '%';
 
-    con.query('select read_ym, SUM(month_count) from user_monthly where user_name != ? and read_ym like ? group by read_ym order by read_ym', [req.body.user_name, read_ym], function(error,rows,fields){
+    con.query('select read_ym, SUM(month_count) as month_count from user_monthly where user_name != ? and read_ym like ? group by read_ym order by read_ym', [req.body.user_name, read_ym], function(error,rows,fields){
         if(!!error)
             console.log(error);
         else{
