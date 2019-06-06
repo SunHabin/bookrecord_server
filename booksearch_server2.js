@@ -285,3 +285,19 @@ app.post('/statMonthly/', function(req,res){
         }
     })
 })
+
+//지혜가한거
+//내책장 - 제목 fetch
+app.get('/myreadBook/', function (req, res) {
+
+    console.log("myreadBook");
+
+    con.query('select * from user_monthly where user_name = ? and read_ym like ? order by read_ym', [req.body.user_name, read_ym], function (error, rows, fields) {
+        if (!!error)
+            console.log(error);
+        else {
+            console.log(rows);
+            res.send(JSON.stringify(rows));
+        }
+    })
+})
