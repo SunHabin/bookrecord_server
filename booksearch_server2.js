@@ -267,7 +267,22 @@ app.get('/statCategory/:name',function(req,res){
 
 })
 
+// 이웃 독서통계 - category
+app.get('/statOtherCategory/:name',function(req,res){
+    
+    //TEST
+    console.log("statOtherCategory");
+    
+    con.query('select category, SUM(ca_count) as count from user_category where user_name != ? group by category order by count desc limit 3', req.params.name, function(error, rows, fields) {
+        if(!!error)
+            console.log(error);
+        else{
+            console.log(rows);
+            res.send(JSON.stringify(rows));
+        }
+    })
 
+})
 
 // 개인 독서통계 - month
 app.post('/statMonthly/', function(req,res){
@@ -277,6 +292,23 @@ app.post('/statMonthly/', function(req,res){
     var read_ym = req.body.year + '%';
 
     con.query('select * from user_monthly where user_name = ? and read_ym like ? order by read_ym', [req.body.user_name, read_ym], function(error,rows,fields){
+        if(!!error)
+            console.log(error);
+        else{
+            console.log(rows);
+            res.send(JSON.stringify(rows));
+        }
+    })
+})
+
+// 이웃 독서통계 - month
+app.post('/statOtherMonthly/', function(req,res){
+    //TEST
+    console.log("statMonthly");
+
+    var read_ym = req.body.year + '%';
+
+    con.query('select read_ym, SUM(month_count) from user_monthly where user_name != ? and read_ym like ? group by read_ym order by read_ym', [req.body.user_name, read_ym], function(error,rows,fields){
         if(!!error)
             console.log(error);
         else{
