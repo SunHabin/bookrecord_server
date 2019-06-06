@@ -291,9 +291,8 @@ app.post('/statMonthly/', function(req,res){
 app.get('/myreadBook/:name', function (req, res) {
 
     console.log("myreadBook");
-    var read_ym = req.body.year + '%';
 
-    con.query('select * from user_book join book_all on user_book.ISBN = book_all.ISBN where user_name = ? order by read_ym', [req.params.name], function (error, rows, fields) {
+    con.query('select * from user_book join book_all on user_book.ISBN = book_all.ISBN where user_name = ? order by read_date', [req.params.name], function (error, rows, fields) {
         if (!!error)
             console.log(error);
         else {
