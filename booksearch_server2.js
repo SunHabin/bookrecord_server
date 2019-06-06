@@ -288,7 +288,7 @@ app.post('/statMonthly/', function(req,res){
 
 //지혜가한거
 //내책장 - 제목 fetch
-app.get('/myreadBook/', function (req, res) {
+app.get('/myreadBook/:name', function (req, res) {
 
     console.log("myreadBook");
 
