@@ -292,7 +292,7 @@ app.get('/myreadBook/:name', function (req, res) {
 
     console.log("myreadBook");
 
-    con.query('select * from user_book where user_name = ?', [req.params.name], function (error, rows, fields) {
+    con.query('select * from user_book join book_all on user_book.ISBN = book_all.ISBN where user_name = ?', [req.params.name], function (error, rows, fields) {
         if (!!error)
             console.log(error);
         else {
@@ -301,3 +301,5 @@ app.get('/myreadBook/:name', function (req, res) {
         }
     })
 })
+
+//'select * from user_book where user_name = ?'
