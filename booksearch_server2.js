@@ -291,7 +291,7 @@ app.post('/statMonthly/', function(req,res){
 app.post('/myreadBook/', function (req, res) {
 
     console.log("myreadBook");
-
+    var read_ym = req.body.year + '%';
     con.query('select * from user_monthly where user_name = ? and read_ym like ? order by read_ym', [req.body.user_name, read_ym], function (error, rows, fields) {
         if (!!error)
             console.log(error);
