@@ -334,4 +334,18 @@ app.get('/myreadBook/:name', function (req, res) {
     })
 })
 
+app.post('/myreadBookKind/', function(req,res){
+    //TEST
+    console.log("myreadBookKind");
+
+    con.query('select * from user_book join book_all on user_book.ISBN = book_all.ISBN where user_name = ? and user_book.category = ? order by book_all.read_date ASC', [req.body.user_name, req.body.value], function(error,rows,fields){
+        if(!!error)
+            console.log(error);
+        else{
+            console.log(rows);
+            res.send(JSON.stringify(rows));
+        }
+    })
+})
+
 //'select * from user_book where user_name = ?'
