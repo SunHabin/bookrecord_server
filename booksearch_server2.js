@@ -21,14 +21,16 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //naver api authetication
-var client_id = 'lD4obV87D0slswIijir6';
-var client_secret = 'anU63Lz7eq';
+    // github upload
+var client_id = 'id';
+var client_secret = 'secret';
 
 // mysql connection info
 var con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'bean0403',
+    // github upload
+    password: 'password',
     database: 'jajus'
 });
 
